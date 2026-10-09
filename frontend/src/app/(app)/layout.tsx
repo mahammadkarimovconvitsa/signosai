@@ -7,6 +7,7 @@ import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/topbar";
 import { ExplainProvider } from "@/components/explain-context";
 import { Logo } from "@/components/logo";
+import { DemoWalkthrough } from "@/components/demo-walkthrough";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -43,6 +44,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <main className="min-w-0 flex-1 overflow-y-auto p-7">{children}</main>
         </div>
       </div>
+      <DemoWalkthrough />
     </ExplainProvider>
   );
 }
