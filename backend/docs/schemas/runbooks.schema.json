@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "runbooks",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "failure_type": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "steps": {
+      "type": [
+        "array",
+        "object"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "title",
+    "failure_type",
+    "steps",
+    "id"
+  ],
+  "additionalProperties": false
+}

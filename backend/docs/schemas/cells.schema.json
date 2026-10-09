@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cells",
+  "type": "object",
+  "properties": {
+    "site_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "technology": {
+      "type": "string",
+      "enum": [
+        "4G",
+        "5G"
+      ]
+    },
+    "revenue_per_min_azn": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "up",
+        "down"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "site_id",
+    "technology",
+    "revenue_per_min_azn",
+    "status",
+    "id"
+  ],
+  "additionalProperties": false
+}

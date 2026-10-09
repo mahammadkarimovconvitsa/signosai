@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "subscriber_segments",
+  "type": "object",
+  "properties": {
+    "cell_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "segment": {
+      "type": "string",
+      "enum": [
+        "premium",
+        "standard",
+        "budget"
+      ]
+    },
+    "count": {
+      "type": "integer"
+    },
+    "arpu_azn": {
+      "type": "number"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "cell_id",
+    "segment",
+    "count",
+    "arpu_azn",
+    "id"
+  ],
+  "additionalProperties": false
+}

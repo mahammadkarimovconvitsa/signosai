@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "contracts",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "enterprise_sla",
+        "tower_lease",
+        "interconnect",
+        "vendor_sla"
+      ]
+    },
+    "restore_within_min": {
+      "type": "integer"
+    },
+    "penalty_per_started_hour_azn": {
+      "type": "number"
+    },
+    "penalty_cap_azn": {
+      "type": "number"
+    },
+    "clause_text": {
+      "type": "string"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "customer_id",
+    "type",
+    "restore_within_min",
+    "penalty_per_started_hour_azn",
+    "penalty_cap_azn",
+    "clause_text",
+    "valid_from",
+    "id"
+  ],
+  "additionalProperties": false
+}

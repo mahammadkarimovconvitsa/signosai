@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "sites",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "district": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "uplink_link_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "energy_cost_azn_month": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "up",
+        "down"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "name",
+    "lat",
+    "lng",
+    "district",
+    "energy_cost_azn_month",
+    "status",
+    "id"
+  ],
+  "additionalProperties": false
+}

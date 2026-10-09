@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "subscribers",
+  "type": "object",
+  "properties": {
+    "home_cell_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "segment": {
+      "type": "string",
+      "enum": [
+        "premium",
+        "standard",
+        "budget"
+      ]
+    },
+    "msisdn_masked": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "home_cell_id",
+    "segment",
+    "msisdn_masked",
+    "id"
+  ],
+  "additionalProperties": false
+}

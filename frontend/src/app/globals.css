@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand: Ink / Signal / Paper / Steel. Surfaces are stepped lighter off
+     Ink; "ink" (foreground text) is Paper, the brand's warm off-white. */
+  --bg: #0e1116;
+  --surface: #14181f;
+  --surface-raised: #1a1f27;
+  --surface-overlay: #212730;
+  --line: #222832;
+  --line-strong: #323a46;
+
+  --ink: #f4f2ee; /* Paper */
+  --ink-secondary: #c9cbd0;
+  --muted: #a9adb5; /* Steel */
+  --muted-2: #686d77;
+
+  /* Signal -- the one brand accent. Used for primary actions, active nav,
+     links, focus states. Kept out of semantic status colors below so it
+     never gets confused with "warning". */
+  --accent: #ff5a1f;
+  --accent-strong: #ff7f4d;
+  --accent-soft: rgba(255, 90, 31, 0.13);
+  --accent-line: rgba(255, 90, 31, 0.38);
+
+  /* "Agent" (SI-authored content) gets a cool neutral off Steel, not a
+     second brand hue -- distinct from Signal without inventing an
+     off-brand color. */
+  --agent: #b9c4d6;
+  --agent-soft: rgba(185, 196, 214, 0.12);
+  --agent-line: rgba(185, 196, 214, 0.32);
+
+  --ok: #32d992;
+  --ok-soft: rgba(50, 217, 146, 0.12);
+  --ok-line: rgba(50, 217, 146, 0.32);
+
+  --at-risk: #f5c518;
+  --at-risk-soft: rgba(245, 197, 24, 0.14);
+  --at-risk-line: rgba(245, 197, 24, 0.35);
+
+  --breached: #ff4d61;
+  --breached-soft: rgba(255, 77, 97, 0.14);
+  --breached-line: rgba(255, 77, 97, 0.35);
+
+  --sev-critical: #ff4d61;
+  --sev-major: #ff8a3d;
+  --sev-minor: #f5c518;
+  --sev-warning: #9aa3b0;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px -4px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px -12px rgba(0, 0, 0, 0.55);
+  --glow-accent: 0 0 0 1px var(--accent-line), 0 0 24px -4px rgba(255, 90, 31, 0.35);
+
+  --font-sans: var(--font-schibsted-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-agent: var(--agent);
+  --color-agent-soft: var(--agent-soft);
+
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-at-risk: var(--at-risk);
+  --color-at-risk-soft: var(--at-risk-soft);
+  --color-breached: var(--breached);
+  --color-breached-soft: var(--breached-soft);
+
+  --color-sev-critical: var(--sev-critical);
+  --color-sev-major: var(--sev-major);
+  --color-sev-minor: var(--sev-minor);
+  --color-sev-warning: var(--sev-warning);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--line);
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse 1100px 560px at 12% -8%, rgba(255, 90, 31, 0.07), transparent),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.wordmark {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 77, 97, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(255, 77, 97, 0);
+  }
+}
+.pulse-live {
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fade-in-up 0.25s ease-out;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-2);
+}
+
+/* Leaflet dark-tile tweak so OSM tiles don't glare against the dark UI */
+.leaflet-container {
+  background: var(--surface);
+  font-family: var(--font-sans);
+}
+.leaflet-tile-pane {
+  filter: brightness(0.65) saturate(0.7) invert(1) hue-rotate(185deg) contrast(0.95);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--surface-overlay);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+}
+.leaflet-control-zoom a {
+  background: var(--surface-overlay) !important;
+  color: var(--ink) !important;
+  border-color: var(--line-strong) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--surface-raised) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(14, 17, 22, 0.75) !important;
+  color: var(--muted) !important;
+}
+.leaflet-control-attribution a {
+  color: var(--muted-2) !important;
 }
