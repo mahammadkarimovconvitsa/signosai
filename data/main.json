@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ada Lovelace",
+      "email": "ada@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Grace Hopper",
+      "email": "grace@example.com",
+      "role": "member"
+    },
+    {
+      "id": 3,
+      "name": "Alan Turing",
+      "email": "alan@example.com",
+      "role": "member"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "title": "First item",
+      "description": "An example item used for mock data.",
+      "tags": ["sample", "mock"]
+    },
+    {
+      "id": 2,
+      "title": "Second item",
+      "description": "Another example item used for mock data.",
+      "tags": ["sample"]
+    }
+  ]
+}
